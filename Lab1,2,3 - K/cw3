@@ -1,0 +1,37 @@
+n=3;
+a=-0.5;
+b=2*%pi;
+xw=[0;%pi/4;%pi/2;3*%pi/2];
+xb=9*%pi/10;
+r=2
+
+function y = f(x);
+    y=sin(x);
+endfunction;
+
+for i=0:n
+    yw(i+1)=f(xw(i+1));
+end
+
+function y=fp(x);
+    y=sin(x);
+endfunction;
+
+function y=omega(xo,no,xwo);
+    for i=0:no
+        tw(i+1)=xo-xwo(i+1);
+    end;
+    y=prod(tw);
+endfunction;
+
+function y=phi(xp,jp,xwp,np);
+    for i=0:np
+        lw(i+1)=xp-xwp(i+1);
+    end;
+    lw(jp+1)=1;
+    for i=0:np
+        mw(i+1)=xwp(jp+1)-xwp(i+1);
+    end;
+    mw(jp+1)=1;
+    y=prod(lw)/prod(mw);
+endfunction;

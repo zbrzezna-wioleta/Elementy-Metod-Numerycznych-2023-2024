@@ -1,0 +1,41 @@
+clear; //czyszczenie stanu pamięci 
+clc;  //czyszczenie konsoli
+
+M = [1 2
+     1 1];
+E=[0 0
+   0 0];
+b = [4.653
+    3.428];
+    
+//punkt 7 z instrukcji liczacy wyznacznik
+
+function y=wz2(C);
+    y=C(1,1)*C(2,2)-C(2,1)*C(1,2);
+endfunction;
+
+// dodawanie macierzy pkt 8
+
+function Y=msum(C,D);
+    Y=C+D;
+endfunction;
+
+//pkt 9 funkcja Cmk obliczjaca macierze uzupelnione z metody cemacera
+//:,k dowolny wiersz kolumna k
+//
+function Y=Cmk(ME,b,k);
+    Y=ME;
+    Y(:,k)=b;
+    
+endfunction;
+  
+ME=msum(M,E);
+detME=wz2(ME);
+
+if detME<>0 then
+    //metoda Cramera
+    
+else
+    //komunikat
+    disp("Wyznacznik macierzy glownej zerowy - btak rozwiazan");
+end
